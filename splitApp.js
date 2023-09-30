@@ -3,6 +3,13 @@ let senior;
 let junior;
 let ceilNum;
 
+$("#clearAll").click(function (){
+    $("#inputBill").val("");
+    $("#inputSenior").val("");
+    $("#inputJunior").val("");
+    $("#payMore").val("");
+})
+
 $("#ceiling").change(function() {
     ceiling = $("#ceiling").val();
 })

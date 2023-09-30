@@ -5,20 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>let's split the bill</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <header>
-    <h1 class="headline">
-      <a>Let's Split The Bill</a>
-    </h1>
-  </header>
+  <h1 class="headline">
+    <a>Let's Split The Bill</a>
+  </h1>
+</header>
 <body>
-  <div>
-    支払い<input type="text" id="inputBill" />円
+  <div id="input" class="middle">
+    支払い<input type="text" id="inputBill" placeholder="金額"/>円
+    <p>上級生<input type="text" id="inputSenior" placeholder="人数"/>人</p>
+    <p>下級生<input type="text" id="inputJunior" placeholder="人数" />人</p>
+    <p>上級生が<input type="text" id="payMore" placeholder="金額"/>円多く払う</p>
+    <p><button id="clearAll" class="btn">クリア</button></p>
   </div>
-  <div>
-    <p>上級生<input type="text" id="inputSenior" />人</p>
-    <p>下級生<input type="text" id="inputJunior" />人</p>
-    <p>上級生が<input type="text" id="payMore" />円多く払う</p>
+  <div id="set" class="middle">
     <select id="ceiling">
       <option value="one-yen">1円</option>
       <option value="ten-yen">10円</option>
@@ -28,14 +30,14 @@
       <option value="tenthousand-yen">10000円</option>
     </select>
     単位で
-    <button id="split">割り勘</button>
+    <button id="split" class="btn">割り勘</button>
   </div>
-  <div>
+  <div id="output" class="middle">
     上級生が<span id="paySenior"></span>円
     <p>下級生が<span id="payJunior"></span>円払うと</p>
     <p><span id="remainder"></span>円余る</p>
-    <button id="reduceSenior">上級生の支払いを減らす</button>
-    <span id="reduceError"></span>
+    <p><button id="reduceSenior" class="btn">上級生の支払いを減らす</button></p>
+    <p><span id="reduceError"></span></p>
   </div>
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
