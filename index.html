@@ -12,20 +12,37 @@
     </h1>
   </header>
 <body>
-    <div>
-      <input type="text" id="inputBill" />
-      <input type="text" id="inputPeople" />
-      <button id="split">割り勘</button>
-    </div>
-    <div>
-        <p>一人<span id="splitedBill"></span>円</p>
-    </div>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-      integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="splitApp.js"></script>
+  <div>
+    支払い<input type="text" id="inputBill" />円
+  </div>
+  <div>
+    <p>上級生<input type="text" id="inputSenior" />人</p>
+    <p>下級生<input type="text" id="inputJunior" />人</p>
+    <p>上級生が<input type="text" id="payMore" />円多く払う</p>
+    <select id="ceiling">
+      <option value="one-yen">1円</option>
+      <option value="ten-yen">10円</option>
+      <option value="hundred-yen">100円</option>
+      <option value="fivehundred-yen">500円</option>
+      <option value="thousand-yen">1000円</option>
+      <option value="tenthousand-yen">10000円</option>
+    </select>
+    単位で
+    <button id="split">割り勘</button>
+  </div>
+  <div>
+    上級生が<span id="paySenior"></span>円
+    <p>下級生が<span id="payJunior"></span>円払うと</p>
+    <p><span id="remainder"></span>円余る</p>
+    <button id="reduceSenior">上級生の支払いを減らす</button>
+    <span id="reduceError"></span>
+  </div>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+ ></script>
+  <script src="splitApp.js"></script>
 </body>
 </html>
