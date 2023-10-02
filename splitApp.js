@@ -3,55 +3,55 @@ let senior;
 let junior;
 let ceilNum;
 
-$("#clearAll").click(function (){
+$("#clearAll").click(function () {
     $("#inputBill").val("");
     $("#inputSenior").val("");
     $("#inputJunior").val("");
     $("#payMore").val("");
 })
 
-$("#ceiling").change(function() {
+$("#ceiling").change(function () {
     ceiling = $("#ceiling").val();
 })
 
-$("#split").click(function () {  //クリックされたときに実行することを定義
-    const bill = $("#inputBill").val(); // テキストボックスのvalue値を取得
+function setCeiling(input) {
+    switch (input) {
+        case "one-yen":
+            ceilNum = 1;
+            break;
+        case "ten-yen":
+            ceilNum = 10;
+            break;
+        case "hundred-yen":
+            ceilNum = 100;
+            break;
+        case "fivehundred-yen":
+            ceilNum = 500;
+            break;
+        case "thousand-yen":
+            ceilNum = 1000;
+            break;
+        case "tenthousand-yen":
+            ceilNum = 10000;
+            break;
+    }
+}
+
+$("#split").click(function () {
+    const bill = $("#inputBill").val();
     senior = $("#inputSenior").val();
     junior = $("#inputJunior").val();
     let payMore = Number($("#payMore").val());
     const people = +senior + +junior;
     const splitedBill = (bill - (senior * payMore)) / people;
-    if (isNaN(bill) || isNaN(people)){
-        $("#splitedBill").text("入力が正しくありません");
-    } else {
-        switch (ceiling){
-            case "one-yen":
-                ceilNum = 1;
-                break;
-            case "ten-yen":
-                ceilNum = 10;
-                break;
-            case "hundred-yen":
-                ceilNum = 100;
-                break;
-            case "fivehundred-yen":
-                ceilNum = 500;
-                break;
-            case "thousand-yen":
-                ceilNum = 1000;
-                break;
-            case "tenthousand-yen":
-                ceilNum = 10000;
-                break;
-        }
-        const paySenior = Math.ceil((splitedBill + payMore)/ceilNum) * ceilNum;
-        $("#paySenior").text(paySenior); // spanタグに値を設定
-        const payJunior = Math.ceil(splitedBill / ceilNum) * ceilNum;
-        $("#payJunior").text(payJunior);
-        const remainder = ((paySenior * senior) + (payJunior * junior)) - bill;
-        $("#remainder").text(remainder);
-        $("#reduceError").text("");
-    }
+    setCeiling(ceiling);
+    const paySenior = Math.ceil((splitedBill + payMore) / ceilNum) * ceilNum;
+    $("#paySenior").text(paySenior);
+    const payJunior = Math.ceil(splitedBill / ceilNum) * ceilNum;
+    $("#payJunior").text(payJunior);
+    const remainder = ((paySenior * senior) + (payJunior * junior)) - bill;
+    $("#remainder").text(remainder);
+    $("#reduceError").text("");
 });
 
 $("#reduceSenior").click(function () {
@@ -62,7 +62,7 @@ $("#reduceSenior").click(function () {
     $("#paySenior").text(paySeniorNew);
     remainder = remainder - ((paySenior - paySeniorNew) * senior);
     $("#remainder").text(remainder);
-    if (paySenior == paySeniorNew){
+    if (paySenior == paySeniorNew) {
         $("#reduceError").text("これ以上減らせません");
     }
 })
